@@ -21,10 +21,8 @@ public class Strategy implements InitializingBean, DisposableBean {
 
     @Override
     public void afterPropertiesSet() {
-        //机器码是0～16的话，需要先转为Long
-        Long value = Long.valueOf(machineCode);
         //将机器码向左移59位，即符号位的后面
-        long starValue = value << 59;
+        long starValue = machineCode << 59;
         //获取当前时间
         long timeMillis = System.currentTimeMillis();
         //将两个long类型的二进制数值进行异或得到的值作为容器初始化后的初始流水号
