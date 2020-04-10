@@ -1,4 +1,4 @@
-package com.pk.service;
+package com.pk.generator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -8,7 +8,7 @@
 		<version>2.2.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.pk.service</groupId>
+	<groupId>com.pk.generator</groupId>
 	<artifactId>pk-service</artifactId>
 	<version>1.0.0</version>
 	<name>pk-service</name>
