@@ -4,8 +4,6 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -42,29 +40,6 @@ public class Strategy implements InitializingBean, DisposableBean {
 
     public static Long getFlowCode(){
         return initializationCode.incrementAndGet();
-    }
-
-    public static void main(String[] args) {
-
-        Map<String, AtomicLong> initializationCode = new ConcurrentHashMap<>();
-        AtomicLong ll = new AtomicLong(1);
-        initializationCode.put("1", ll);
-
-        for (int i = 0; i < 10; i++){
-            System.out.println("111111: i=" + i + "  aa  " + ll.incrementAndGet());
-            System.out.println("22222: " + i + " bb "  + ll.get());
-        }
-
-        Long code = Long.valueOf(1);
-        long l = code << 59;
-        System.out.println("code: " + Long.toBinaryString(code));
-        System.out.println("code: " + Long.toBinaryString(code<<59));
-        long timeMillis = System.currentTimeMillis();
-        System.out.println("timeMillis: " + timeMillis);
-        System.out.println("timeMillis: " + Long.toBinaryString(timeMillis));
-
-        long l1 = l ^ timeMillis;
-        System.out.println("endValue: " + Long.toBinaryString(l1));
     }
 
 }
