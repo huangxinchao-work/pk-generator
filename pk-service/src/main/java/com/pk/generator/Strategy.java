@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class Strategy implements InitializingBean, DisposableBean {
 
-    private static AtomicLong initializationCode;
+    public static AtomicLong initializationCode;
 
     @Value("${machine.code:1}")
     private Long machineCode;
@@ -34,10 +34,6 @@ public class Strategy implements InitializingBean, DisposableBean {
     @Override
     public void destroy() {
 
-    }
-
-    public static Long getFlowCode(){
-        return initializationCode.incrementAndGet();
     }
 
 }
