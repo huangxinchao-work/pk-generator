@@ -5,6 +5,7 @@
 
 	<groupId>com.pk.generator</groupId>
 	<artifactId>pk-generator</artifactId>
+	<packaging>pom</packaging>
 	<version>1.0.0</version>
 	<name>pk-generator</name>
 	<description>主键生成器</description>
