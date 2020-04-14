@@ -1,10 +1,8 @@
 package com.pk.generator;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Value;
-
-import java.util.concurrent.atomic.AtomicLong;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @author: Roy
@@ -12,28 +10,19 @@ import java.util.concurrent.atomic.AtomicLong;
  * @create: 2020-04-10 10:36
  * @since: JDK1.8
  */
-public class Strategy implements InitializingBean, DisposableBean {
+@Configuration
+public class Strategy {
 
-    public static AtomicLong initializationCode;
+    @Autowired
+    private InitBean initBean;
 
-    @Value("${machine.code:1}")
-    private Long machineCode;
-
-    @Override
-    public void afterPropertiesSet() {
-        //将机器码向左移59位，即符号位的后面
-        long starValue = machineCode << 59;
-        //获取当前时间
-        long timeMillis = System.currentTimeMillis();
-        //将两个long类型的二进制数值进行异或得到的值作为容器初始化后的初始流水号
-        long endValue = starValue ^ timeMillis;
-        //把初始值赋给AtomicLong
-        initializationCode = new AtomicLong(endValue);
-    }
-
-    @Override
-    public void destroy() {
-
+    @Bean
+    public InitBean afterPropertiesSet() {
+        if (initBean == null){
+            initBean = new InitBean();
+        }
+        GainNextPk.setInitBean(initBean);
+        return initBean;
     }
 
 }

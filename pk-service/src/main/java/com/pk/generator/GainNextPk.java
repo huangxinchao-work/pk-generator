@@ -1,6 +1,6 @@
 package com.pk.generator;
 
-import static com.pk.generator.Strategy.initializationCode;
+
 
 /**
  * @author: Roy
@@ -10,8 +10,14 @@ import static com.pk.generator.Strategy.initializationCode;
  */
 public class GainNextPk {
 
-    public static Long getFlowCode(){
-        return initializationCode.incrementAndGet();
+    public static InitBean initBean;
+
+    static void setInitBean(InitBean initBean) {
+        GainNextPk.initBean = initBean;
+    }
+
+    public static long getPk(){
+        return initBean.getInitializationCode();
     }
 
 }

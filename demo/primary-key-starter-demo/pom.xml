@@ -25,11 +25,11 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.feng.cache</groupId>
-            <artifactId>feng-cache-spring-boot-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.feng.cache</groupId>-->
+<!--            <artifactId>feng-cache-spring-boot-starter</artifactId>-->
+<!--            <version>1.0-SNAPSHOT</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -42,6 +42,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.pk.generator</groupId>
+            <artifactId>pk-generator</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
     </dependencies>
 
