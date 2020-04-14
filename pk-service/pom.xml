@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>pk-service</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.5</version>
 	<name>pk-service</name>
 	<description>主键生成规则</description>
 

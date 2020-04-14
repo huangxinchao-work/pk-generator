@@ -1,7 +1,6 @@
 package com.pk.generator;
 
 
-
 /**
  * @author: Roy
  * @description: 获取下一主键
@@ -10,13 +9,13 @@ package com.pk.generator;
  */
 public class GainNextPk {
 
-    public static InitBean initBean;
+    private InitBean initBean;
 
-    static void setInitBean(InitBean initBean) {
-        GainNextPk.initBean = initBean;
+    public GainNextPk(InitBean initBean) {
+        this.initBean = initBean;
     }
 
-    public static long getPk(){
+    public long getPk(){
         return initBean.getInitializationCode();
     }
 
