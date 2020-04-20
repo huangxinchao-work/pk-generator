@@ -56,6 +56,10 @@ public class Strategy {
 
     @Bean
     public RedisTemplate<String, Object> redisTemplate(){
+        if (redisProperties.isDefault()){
+            log.info("================没有redis的配置，不创建redisTemplate==============");
+            return null;
+        }
         RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration(redisProperties.getHost(), redisProperties.getPort());
         configuration.setDatabase(redisProperties.getDatabase());
         if (redisProperties.getSecret() != null && redisProperties.getSecret() != ""){

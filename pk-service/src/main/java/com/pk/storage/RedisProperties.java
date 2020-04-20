@@ -2,6 +2,12 @@ package com.pk.storage;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.support.PropertiesLoaderUtils;
+
+import java.io.IOException;
+import java.util.Enumeration;
+import java.util.Properties;
+import java.util.Set;
 
 /**
  * @author: Roy
@@ -14,30 +20,30 @@ import org.springframework.context.annotation.Configuration;
 public class RedisProperties {
 
     //调用的请求路径
-    @Value(value = "${cache.host}")
+    @Value(value = "${spring.redis.host}")
     private String host;
     //调用的端口号
-    @Value(value = "${cache.port:0}")
+    @Value(value = "${spring.redis.port:0}")
     private int port;
     //调用的用户名
-    @Value(value = "${cache.appId}")
+    @Value(value = "${spring.redis.appId}")
     private String appId;
     //调用的密码
-    @Value(value = "${cache.secret}")
+    @Value(value = "${spring.redis.secret}")
     private String secret;
     //db库索引，默认为0（0-15）
-    @Value(value = "${cache.database:0}")
+    @Value(value = "${spring.redis.database:0}")
     private int database;
     //最大等待时间
-    @Value(value = "${cache.maxWaitMillis:3000}")
+    @Value(value = "${spring.redis.maxWaitMillis:3000}")
     private int maxWaitMillis;
     //最大空闲的jedis实例，默认20
-    @Value(value = "${cache.maxIdle:15}")
+    @Value(value = "${spring.redis.maxIdle:15}")
     private int maxIdle;
     //最大连接池数量，默认30
-    @Value(value = "${cache.maxTotal:30}")
+    @Value(value = "${spring.redis.maxTotal:30}")
     private int maxTotal;
-    @Value(value = "${cache.timeout:30000}")
+    @Value(value = "${spring.redis.timeout:30000}")
     private long timeout;
 
     public String getHost() {
@@ -129,4 +135,23 @@ public class RedisProperties {
             return true;
         }
     }
+
+    //读取配置文件中的redis配置
+    public void readProperties(){
+        Properties properties;
+        try {
+            properties = PropertiesLoaderUtils.loadAllProperties("properties");
+            //遍历取值
+            Enumeration<?> enumeration = properties.propertyNames();
+
+            Set<Object> objects = properties.keySet();
+            for (Object object : objects) {
+                System.out.println(new String(properties.getProperty((String) object).getBytes("iso-8859-1"), "gbk"));
+            }
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -1,6 +1,5 @@
 package com.pk.storage;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -11,9 +10,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class PrimaryKeyMemory {
-
-    @Autowired
-    private RedisProperties redisProperties;
 
     /**
      * 存储生成的主键，便于系统重启或down掉之后继续上一次的编码增加
