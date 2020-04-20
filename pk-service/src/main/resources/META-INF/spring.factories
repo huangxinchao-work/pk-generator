@@ -1,2 +1,2 @@
 # 键值对的值为自动配置类的全限定名
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.pk.generator.Strategy
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.pk.generator.Strategy,com.pk.storage.PrimaryKeyMemory

@@ -16,18 +16,18 @@ public class InitBean implements InitializingBean {
     @Value("${machine.code:0}")
     private long machineCode;
 
-    public long getMachineCode() {
-        return machineCode;
-    }
-
-    public void setMachineCode(long machineCode) {
-        this.machineCode = machineCode;
-    }
-
     private AtomicLong initializationCode;
 
+    private long storageCode;
+
+    public long getStorageCode() {
+        return storageCode;
+    }
+
     public long getInitializationCode(){
-        return initializationCode.incrementAndGet();
+        long l = initializationCode.incrementAndGet();
+        storageCode = l;
+        return l;
     }
 
     @Override
